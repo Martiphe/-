@@ -30,6 +30,7 @@ print(my_cos(0.1))
 vs = np.vectorize(my_cos)
 print(my_cos, vs)
 
-angles = np.r_[0:1:0.01]
+angles = np.r_[0:15:0.01]
 plt.plot(angles, vs(angles))
+plt.plot(angles, np.cos(angles))
 plt.show()
