@@ -1,16 +1,16 @@
 import random
 
-class ring_18:
+class Field:
      def sum(self, a, b):
-         return (a + b) % 35
+         return (a + b) % 3
 
      def multiply(self, c, b):
-         return (c * b) % 35
+         return (c * b) % 3
 
-X = ring_18()
-a = random.randint(0, 36)
-b = random.randint(0, 36)
-c = random.randint(0, 36)
+X = Field()
+a = random.randint(0, 2)
+b = random.randint(0, 2)
+c = random.randint(0, 2)
 
 print(a, b, c)
 
@@ -63,11 +63,19 @@ p = X.multiply(b, a)
 print(p)
 print(h == p)
 
-print("Дистрибутовность")
+print("Дистрибутивность")
 h = X.multiply(a, X.sum(b, c))
 print(h)
-p = X.sum(X.sum(a, b), X.sum(a, c))
+p = X.sum(X.multiply(a, b), X.multiply(a, c))
 print(p)
 print(h == p)
 
-print("Коммутативное колько с единицой Z/35Z\n")
+print("Обратимость умножения")
+if a != 0:
+    h = X.multiply(a, a)
+    print(h)
+    p = X.multiply(a, a)
+    print(h == p)
+print("У нуля нет обратного")
+
+print("{0, 1, 2} - Поле\n")
