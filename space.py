@@ -1,81 +1,84 @@
 import random
 
 class Field:
-     def sum(self, a, b):
-         return (a + b) % 3
+     def __init__(self, p):
+         self.p = p % 3
 
-     def multiply(self, c, b):
-         return (c * b) % 3
 
-X = Field()
-a = random.randint(0, 2)
-b = random.randint(0, 2)ы
-c = random.randint(0, 2)
+     def __str__(self):
+         return str(self.p)
 
+
+     def __add__(self, other):
+         return (self.p + other.p) % 3
+
+
+     def __mul__(self, other):
+         return (self.p * other.p) % 3
+
+     def __sub__(self, other):
+         return (self.p - other.p) % 3
+
+
+     def __truediv__(self, other):
+         return (self.p / other.p) % 3
+
+
+
+
+a = Field(random.randint(-100, 100))
+b = Field(random.randint(0, 2))
+c = Field(random.randint(0, 2))
+e_add = Field(0)                     # Нейтральное по сложению
+e_sub = Field(1)                     # Нейтральное по умножению
 print(a, b, c)
 
+
 print("Ассоциативность сложения")
-h = X.sum(a, X.sum(b, c))
-print(h)
-p = X.sum(X.sum(a, b), c)
-print(p)
-print(h == p)
+print(a + Field(b + c))
+print(Field(a + b) + c)
+
 
 print("Нейтральный элемент по сложению")
-h = X.sum(0, a)
-print(h)
-p = X.sum(a, 0)
-print(p)
-print(h == p)
+print(a + e_add)
+print(e_add + a)
+
 
 print("Обратимость сложения")
-h = X.sum(a, -a)
-print(h)
-p = X.sum(-a, a)
-print(p)
-print(h == p)
+print(a - a)
+print(a - a)
+
 
 print("Коммутативность сложения")
-h = X.sum(a, b)
-print(h)
-p = X.sum(b, a)
-print(p)
-print(h == p)
+print(a + b)
+print(b + a)
+
 
 print("Ассоциативность умножения")
-h = X.multiply(a, X.multiply(b, c))
-print(h)
-p = X.multiply(X.multiply(a, b), c)
-print(p)
-print(h == p)
+print(a * Field(b * c))
+print(Field(a * b) * c)
+
 
 print("Нейтральный элемент по умножению")
-h = X.multiply(1, a)
-print(h)
-p = X.multiply(a, 1)
-print(p)
-print(h == p)
+print(a * e_sub)
+print(e_sub * a)
+
 
 print("Коммутативность по умножению")
-h = X.multiply(a, b)
-print(h)
-p = X.multiply(b, a)
-print(p)
-print(h == p)
+print(a * b)
+print(b * a)
+
 
 print("Дистрибутивность")
-h = X.multiply(a, X.sum(b, c))
-print(h)
-p = X.sum(X.multiply(a, b), X.multiply(a, c))
-print(p)
-print(h == p)
+print(a * Field(b + c))
+print(Field(a + b) * c)
+
 
 print("Обратимость умножения")
 if a != 0:
-    h = X.multiply(a, a)
-    print(h)
-    p = X.multiply(a, a)
-    print(h == p)
+   print(a * a)
+   print(a * a)
 print("У нуля нет обратного")
+
 
 print("{0, 1, 2} - Поле\n")
