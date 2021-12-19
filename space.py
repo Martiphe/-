@@ -26,7 +26,7 @@ class Field:
 
 
 
-a = Field(random.randint(-100, 100))
+a = Field(random.randint(0, 2))
 b = Field(random.randint(0, 2))
 c = Field(random.randint(0, 2))
 e_add = Field(0)                     # Нейтральное по сложению
