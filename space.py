@@ -10,18 +10,21 @@ class Field:
 
 
      def __add__(self, other):
-         return (self.p + other.p) % 3
+         return Field(self.p + other.p)
 
 
      def __mul__(self, other):
-         return (self.p * other.p) % 3
+         return Field(self.p * other.p)
+
 
      def __sub__(self, other):
-         return (self.p - other.p) % 3
+         return Field(self.p - other.p)
 
 
      def __truediv__(self, other):
-         return (self.p / other.p) % 3
+         if other.p != 0:
+             return Field(self.p * other.p)
+         else: return 'Делить на нуль нельзя'
 
 
 
@@ -35,8 +38,8 @@ print(a, b, c)
 
 
 print("Ассоциативность сложения")
-print(a + Field(b + c))
-print(Field(a + b) + c)
+print(a + (b + c))
+print((a + b) + c)
 
 
 print("Нейтральный элемент по сложению")
@@ -46,7 +49,6 @@ print(e_add + a)
 
 print("Обратимость сложения")
 print(a - a)
-print(a - a)
 
 
 print("Коммутативность сложения")
@@ -55,8 +57,8 @@ print(b + a)
 
 
 print("Ассоциативность умножения")
-print(a * Field(b * c))
-print(Field(a * b) * c)
+print(a * (b * c))
+print((a * b) * c)
 
 
 print("Нейтральный элемент по умножению")
@@ -70,15 +72,14 @@ print(b * a)
 
 
 print("Дистрибутивность")
-print(a * Field(b + c))
-print(Field(a + b) * c)
+print(a * (b + c))
+print(a*b + a*c)
 
 
 print("Обратимость умножения")
-if a != 0:
-   print(a * a)
-   print(a * a)
-print("У нуля нет обратного")
+print(a / a)
 
 
 print("{0, 1, 2} - Поле\n")
+
+
