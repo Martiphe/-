@@ -1,7 +1,7 @@
 import random
 import math
 
-def is_ferma(n):
+def is_prime(n):
     if n < 2:
         return False
     if n > 3:
@@ -16,4 +16,4 @@ def is_ferma(n):
 
 print("Введите число: ")
 a = int(input())
-print(is_ferma(a), '\n')
+print(is_prime(a), '\n')
