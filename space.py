@@ -13,6 +13,10 @@ class Field:
          return Field(self.p + other.p)
 
 
+     def __neg__(self):
+         return Field(-self.p)
+
+
      def __mul__(self, other):
          return Field(self.p * other.p)
 
@@ -48,7 +52,8 @@ print(e_add + a)
 
 
 print("Обратимость сложения")
-print(a - a)
+print(a + (-a))
+print(-a + a)
 
 
 print("Коммутативность сложения")
