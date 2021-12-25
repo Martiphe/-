@@ -1,27 +1,29 @@
 import itertools
 
 class Fib:
+
     class _Fib_iter:
 
         def __init__(self):
-            self.data = []
-            self.data.append(0)
-            self.data.append(1)
-            self.count = 0
+            self.previous_second = 0
+            self.previous_first = 1
+            self.next = 1
 
         def __next__(self):
-            if self.count < 2:
-                self.count += 1
-                return self.data[self.count - 1]
-            self.data.append(self.data[self.count - 1] + self.data[self.count - 2])
-            self.count += 1
-            return self.data[self.count - 1]
+            f = self.next
+            self.next = self.previous_second + self.previous_first
+            self.previous_second = self.previous_first
+            self.previous_first = self.next
+            return f
 
     def __iter__(self):
         return Fib._Fib_iter()
 
 Dike = Fib()
 print(list(itertools.islice(Fib(), 50)))
+
+
+
 
 
 
