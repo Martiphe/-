@@ -9,7 +9,7 @@ def is_prime(n):
         return False
     if n > 3:
         for i in prange(25):
-            if random.randint(2, n - 1)**n-1 % n != 1:
+            if random.randint(2, n - 1)**(n-1) % n != 1:
                 return False
         for i in prange(2, int(math.sqrt(n))+1):
             if n % i == 0:
