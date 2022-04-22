@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>chall2</title>
+</head>
+<body>
+<center>
+    <h2><strong>Второе задание!!!</strong></h2>
+    <form method="post" name="value">
+        <p>
+            <label for="value"> Напиши слово, которое с латинского переводится ка "подобный звезде"(напиши всё маленькими буквами):</label>
+            <input type="text" name = "value">
+        </p>
+        <p>
+            <input type="submit" name="Ok">
+        </p>
+    </form>
+    {% if term == True %}
+    <p>
+        <a href="award"> <button type="button">Хорош! Давай дальше!</button> </a>
+    </p>
+    {% endif %}
+</center>
+</body>
+</html>
