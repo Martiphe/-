@@ -21,9 +21,12 @@ if cur.fetchone() is None:
     for value in cur.execute("SELECT * FROM students"):
         print(value)
 else:
-    for value in cur.execute("SELECT * FROM students"):
+    for value in cur.execute("SELECT * FROM students WHERE name=?", (student_name,)):
+        cur.execute("UPDATE students SET grade = ? where name =?", (student_grade,student_name))
+        con.commit()
+        for value in cur.execute("SELECT * FROM students"):
             print(value)
 
-con.close()
+con.close())
 
 
